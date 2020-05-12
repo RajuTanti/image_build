@@ -1,6 +1,6 @@
 node {    
     def newApp
-    def registry = 'hub.docker.com'
+    def registry = 'tantiraju/microservices-nod'
     def registryCredential = 'dockerhub'
 	
 	stage('Git') {
@@ -20,8 +20,8 @@ node {
         }
 	}
 	stage('Registring image') {
-        docker.withRegistry('https://' + registry, registryCredential ) {
-    		newApp.push 'latest2'
+        docker.withRegistry(registryCredential ) {
+    		newApp.push 'latest'
         }
 	}
     stage('Removing image') {
