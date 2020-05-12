@@ -18,10 +18,5 @@ node {
 			newApp = docker.build buildName
 			newApp.push()
         }
-	}		
-       stage('Removing image') {
-        sh "docker rmi $registry:$BUILD_NUMBER"
-        sh "docker rmi $registry:latest"
-    }
-    
+	}
 }
