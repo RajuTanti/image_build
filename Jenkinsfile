@@ -1,5 +1,4 @@
-node {
-    env.AWS_ECR_LOGIN=true
+node {    
     def newApp
     def registry = 'tantiraju'
     def registryCredential = 'dockerhub'
@@ -14,14 +13,14 @@ node {
 		sh 'npm test'
 	}
 	stage('Building image') {
-        docker.withRegistry(registry, registryCredential ) {
+        docker.withRegistry('https://' + registry, registryCredential ) {
 		    def buildName = registry + ":$BUILD_NUMBER"
 			newApp = docker.build buildName
 			newApp.push()
         }
 	}
 	stage('Registring image') {
-        docker.withRegistry(registry, registryCredential ) {
+        docker.withRegistry('https://' + registry, registryCredential ) {
     		newApp.push 'latest2'
         }
 	}
