@@ -15,13 +15,13 @@ node {
 	stage('Building image') {
         docker.withRegistry('' , registryCredential ) {
 		    def buildName = registry + ":$BUILD_NUMBER"
-			//newApp = docker.build buildName
-		 	//newApp.push()
+			newImage = docker.build buildName
+		 	newImage.push()
         }
 	}
 	stage('Registring image') {
         docker.withRegistry( '' , registryCredential ) {
-    		newApp.push 'latest2'
+    		newImage.push 'latest2'
         }
 	}
     stage('Removing image') {
