@@ -18,16 +18,7 @@ node {
 			newApp = docker.build buildName
 			newApp.push()
         }
-	}
-	stage('Deploy Image') {
-           steps{
-		 script {
-      			docker.withRegistry( '', registryCredential ) {
-        		dockerImage.push()
-      			}
-	      }
-  	   }
-	}	
+	}		
        stage('Removing image') {
         sh "docker rmi $registry:$BUILD_NUMBER"
         sh "docker rmi $registry:latest"
