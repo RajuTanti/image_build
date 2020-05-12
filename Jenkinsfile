@@ -21,7 +21,7 @@ node {
 	}
 	stage('Registring image') {
         docker.withRegistry( '' , registryCredential ) {
-    		newImage.push 'latest2'
+    		newImage.push 'latest'
         }
 	}
     stage('Removing image') {
