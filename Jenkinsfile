@@ -1,6 +1,6 @@
 node {    
     def newApp
-    def registry = 'tantiraju'
+    def registry = 'hub.docker.com'
     def registryCredential = 'dockerhub'
 	
 	stage('Git') {
