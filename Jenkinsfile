@@ -19,12 +19,16 @@ node {
 			newApp.push()
         }
 	}
-	stage('Registring image') {
-        docker.withRegistry(registryCredential ) {
-    		newApp.push 'latest2'
-        }
-	}
-    stage('Removing image') {
+	stage('Deploy Image') {
+           steps{
+		 script {
+      			docker.withRegistry( '', registryCredential ) {
+        		dockerImage.push()
+      			}
+	      }
+  	   }
+	}	
+       stage('Removing image') {
         sh "docker rmi $registry:$BUILD_NUMBER"
         sh "docker rmi $registry:latest"
     }
