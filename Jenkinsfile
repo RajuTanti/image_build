@@ -23,7 +23,7 @@ node {
 	sh "echo ${jsonObj.age}"   // prints out 5
     	}
 
-	def props = readJSON file: 'components.json'
+	def props = readJSON file: 'package.json'
 	assert props['attr1'] == 'One'
 	assert props.attr1 == 'One'
 
