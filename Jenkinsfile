@@ -14,14 +14,8 @@ node {
 	}
 	//reading data from json
 	
-    	stage("checkout") {
-	def jsonString = '{"name":"katone","age":5}'
-	def jsonObj = readJSON text: jsonString
-
-	assert jsonObj['name'] == 'katone'  // this is a comparison.  It returns true
-	sh "echo ${jsonObj.name}"  // prints out katone
-	sh "echo ${jsonObj.age}"   // prints out 5
-    	}
+    	stage("readJson") {
+	 
 
 	def props = readJSON file: 'package1.json'
 	assert props['attr1'] == 'One'
@@ -31,14 +25,6 @@ node {
 	assert props['key'] == 'value'
 	assert props.key == 'value'
 
-	def props = readJSON text: '[ "a", "b"]'
-	assert props[0] == 'a'
-	assert props[1] == 'b'
-
-	def props = readJSON text: '{ "key": null, "a": "b" }', returnPojo: true
-	assert props['key'] == null
-	props.each { key, value ->
-	    echo "Walked through key $key and value $value"
 	}
 	
 	//end json
