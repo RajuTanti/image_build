@@ -17,14 +17,9 @@ node {
     	stage("readJson") {
 	 
 
-	def props = readJSON file: 'package1.json'
+	def props = readJSON file: 'components.json'
 	assert props['attr1'] == 'One'
-	assert props.attr1 == 'One'
-
-	def props = readJSON text: '{ "key": "value" }'
-	assert props['key'] == 'value'
-	assert props.key == 'value'
-
+	assert props.attr1 == 'One'	
 	}
 	
 	//end json
