@@ -1,0 +1,6 @@
+{
+  "repository":{
+    "name": "azure",
+    "capacity": "10GB"
+  }
+}
