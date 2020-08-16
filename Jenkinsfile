@@ -16,7 +16,8 @@ node {
 	
     	stage("readJson") {
 	 
-
+ 	sh 'pwd'
+	sh 'ls'
 	def props = readJSON file: 'components.json'
 	assert props['attr1'] == 'One'
 	assert props.attr1 == 'One'	
